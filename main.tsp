@@ -23,10 +23,12 @@ model LoginResponse {
 
 @post
 @route("/login")
+@tag("auth")
 op login(@body request: LoginRequest): LoginResponse;
 
 @get
 @route("/me")
+@tag("auth")
 op me(): User;
 
 model Channel {
@@ -44,6 +46,7 @@ model ListChannelsResponse {
 
 @get
 @route("/list-channels")
+@tag("channels")
 op listChannels(): ListChannelsResponse;
 
 model CreateChannelRequest {
@@ -56,6 +59,7 @@ model CreateChannelResponse {
 
 @post
 @route("/create-channel")
+@tag("channels")
 op createChannel(@body request: CreateChannelRequest): CreateChannelResponse;
 
 model Message {
@@ -76,6 +80,7 @@ model ListMessagesResponse {
 
 @get
 @route("/list-messages")
+@tag("messages")
 op listMessages(
   @query channelId: string,
   @query threadId?: string,
