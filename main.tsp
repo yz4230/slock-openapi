@@ -38,6 +38,8 @@ model Channel {
   name: string;
   description?: string;
   isDirect: boolean;
+  createdAt: utcDateTime;
+  updatedAt: utcDateTime;
 }
 
 model ListChannelsResponse {
@@ -70,6 +72,8 @@ model Message {
   channelId: string;
   threadId?: string;
   content: string;
+  createdAt: utcDateTime;
+  updatedAt: utcDateTime;
 }
 
 model ListMessagesResponse {
