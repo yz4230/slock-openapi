@@ -6,7 +6,15 @@ using Http;
 @useAuth(BearerAuth)
 namespace SlockService;
 
-model User {
+model WithTimestamp {
+  @visibility(Lifecycle.Read)
+  createdAt: utcDateTime;
+
+  @visibility(Lifecycle.Read)
+  updatedAt: utcDateTime;
+}
+
+model User extends WithTimestamp {
   id: string;
   name: string;
   email: string;
@@ -48,15 +56,13 @@ op register(@body request: RegisterRequest): RegisterResponse;
 @tag("auth")
 op me(): User;
 
-model Channel {
+model Channel extends WithTimestamp {
   @visibility(Lifecycle.Read)
   id: string;
 
   name: string;
   description?: string;
   isDirect: boolean;
-  createdAt: utcDateTime;
-  updatedAt: utcDateTime;
 }
 
 model ListChannelsResponse {
@@ -81,7 +87,7 @@ model CreateChannelResponse {
 @tag("channels")
 op createChannel(@body request: CreateChannelRequest): CreateChannelResponse;
 
-model Message {
+model Message extends WithTimestamp {
   @visibility(Lifecycle.Read)
   id: string;
 
@@ -89,8 +95,6 @@ model Message {
   channelId: string;
   threadId?: string;
   content: string;
-  createdAt: utcDateTime;
-  updatedAt: utcDateTime;
 }
 
 model ListMessagesResponse {
