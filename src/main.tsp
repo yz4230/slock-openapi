@@ -61,7 +61,7 @@ model Channel extends WithTimestamp {
   id: string;
 
   name: string;
-  description?: string;
+  description: string;
   isDirect: boolean;
 }
 
