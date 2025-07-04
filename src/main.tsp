@@ -17,6 +17,7 @@ model WithTimestamp {
 model User extends WithTimestamp {
   id: string;
   name: string;
+  displayName: string;
   email: string;
 }
 
@@ -37,6 +38,7 @@ op login(@body request: LoginRequest): LoginResponse;
 
 model RegisterRequest {
   name: string;
+  displayName: string;
   email: string;
   password: string;
 }
