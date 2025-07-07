@@ -6,7 +6,11 @@ using Http;
 
 namespace SlockService;
 
+model MeResponse extends OkResponse {
+  user: User;
+}
+
 @get
 @route("/me")
 @tag("auth")
-op me(): User;
+op me(): MeResponse | UnauthorizedResponse;
