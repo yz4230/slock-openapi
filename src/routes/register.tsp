@@ -1,6 +1,6 @@
 import "@typespec/http";
-import "../namespace.tsp";
 import "../models.tsp";
+import "../namespace.tsp";
 
 using Http;
 
